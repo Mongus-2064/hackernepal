@@ -2,13 +2,13 @@ import mongoose from "mongoose";
 
 const DATABASE_URI = process.env.MONGO_URI
 
-export const db = () => {
+export const db = async() => {
   try {
     if (!DATABASE_URI) {
-      return console.log("Database URI nor Found");
+      return console.log("Database URI not Found");
     }
 
-    mongoose.connect(DATABASE_URI);
+   await mongoose.connect(DATABASE_URI);
     return console.log("Database connected Successfully!");
   } catch (error) {
     return console.log("Internal Server error");
