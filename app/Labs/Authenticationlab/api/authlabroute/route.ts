@@ -21,7 +21,7 @@ try {
 
  if(username !== vulname )
     {
-        return NextResponse.json({err:"Inavlid username"},{status:401});
+        return NextResponse.json({err:"User doesnot Exist"},{status:401});
     }
 
     if (password !== vulpass)
