@@ -6,24 +6,30 @@ try {
     await db();
     const body = await req.json();
     const {username , password} =body;
+
+
+
     
     if (!username || !password)
     {
         return NextResponse.json({err:"Please fill all fields"},{status:400});
     }
 
- if(username === "nabin" && password ==="nabin123")
+
+    const vulname = "nabin";
+    const vulpass = "nabin123"
+
+ if(username !== vulname )
     {
-        return NextResponse.json({success:`welcome ${username}`},{status:200});
+        return NextResponse.json({err:"Inavlid username"},{status:401});
     }
 
-    if (username === "nabin")
+    if (password !== vulpass)
     {
-        return NextResponse.json({err:"Inavlid password"},{status:400});
+        return NextResponse.json({err:"Inavlid password"},{status:401});
     }
-    else{
-        return NextResponse.json({err:"Invalid username"}, {status:400});
-    }
+    
+    return NextResponse.json({success:`welcome ${vulname}`});
 
    
     
